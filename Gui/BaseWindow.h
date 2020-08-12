@@ -20,7 +20,7 @@ public:
 		}
 		if (pThis)
 		{
-			return pThis->HandleMessage(uWsg, wParam, lParam);
+			return pThis->HandleMessage(uMsg, wParam, lParam);
 		}
 		else
 		{
@@ -31,7 +31,7 @@ public:
 	BaseWindow() : m_hwnd(NULL) {}
 
 	BOOL Create(
-		PCWSTR lpWindowName,
+		LPCSTR lpWindowName,
 		DWORD dwStyle,
 		DWORD dwExStyle = 0,
 		int x = CW_USEDEFAULT,
@@ -61,7 +61,7 @@ public:
 	HWND GetWindowId()const { return m_hwnd; }
 
 protected:
-	virtual PCWSTR ClassName() const = 0;
+	virtual LPCSTR ClassName() const = 0;
 	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
 
 	HWND m_hwnd;
