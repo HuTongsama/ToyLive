@@ -11,12 +11,14 @@ public:
 	Server();
 	~Server();
 	bool InitListen(const string& port);
-
+	int SendAllData(char* buf, int len);
 private:
 	void ClearServerInfo();
+	static DWORD WINAPI ListenFunction(LPVOID lpParam);
 private:
 	SOCKET m_listenSocket;
 	vector<SOCKET> m_clients;
 	HANDLE m_listenThread;
 	bool m_threadCloseFlag;
+	void *m_pWindow;
 };
